@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  div(class="w3-container w3-row")
+    h2 Tenants:
+    each tenant in tenants
+      div(class="w3-container w3-third")
+        div(class="w3-card")
+          header(class="w3-container w3-metro-blue")
+            h4= tenant.name
+          div(class="w3-container")
+            p URL: 
+              a(href=`${tenant.url}/itspaces` target="_blank") #{tenant.url}
+            p Folder: #{tenant.folder}
+          footer(class="w3-container w3-bar")
+            a(class="w3-btn w3-metro-blue w3-margin" href=`/${tenant.id}/edit`) Edit
+            a(class="w3-btn w3-metro-blue w3-margin" href=`/${tenant.id}/view`) Artifacts
+  div(class="w3-container w3-row w3-padding-16")
+    a(class="w3-btn w3-circle w3-xlarge w3-ripple w3-metro-blue" href="/add-tenant") +
+  

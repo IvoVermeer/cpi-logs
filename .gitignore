@@ -1,0 +1,8 @@
+# Node app, ignore node_mdules
+node_modules
+
+# No packed files
+*.tgz
+
+# No VSCode folders
+.vscode

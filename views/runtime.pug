@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  div(class="w3-container w3-row")
+    h2 Artifacts
+    div(class="w3-row")
+      button(class="w3-button w3-metro-blue fas fa-sync" id="refresh" data-tenant=`${tenant.id}`)
+      input(class="w3-input w3-border w3-padding" type="text", name="search" id="search" placeholder="Search for artifacts..")
+    div(class="w3-row" id="artifacts")
+      each artifact in artifacts
+        - let date = new Date(artifact.DeployedOn).toLocaleString()
+        div(class="w3-container w3-col l4 m6 s12 w3-section")
+          form(class="w3-card" data-artifact=artifact.Id data-tenant=`${tenant.id}`)
+            header(class="w3-container w3-metro-blue")
+              h4= artifact.Name
+            div(class="w3-container")
+              p Deployed on: #{date}
+              p Status: #{artifact.Status}
+              label(for="lastRunDate") Last run date (logs as of) 
+              input(type="text", name="lastRunDate" value=`${tenant[artifact.Id] && tenant[artifact.Id].lastRunDate || ''}`)
+            div(class="w3-container")
+              button(class="w3-btn w3-metro-blue w3-margin" type="button" name="logs" value=artifact.Id) Refresh logs
+              button(class="w3-btn w3-metro-blue w3-margin" type="button" name="backup" value=artifact.Id) Backup
+  div(class="w3-modal" id="refresh-modal")
+    div(class="w3-modal-content")
+      div(class="w3-container")
+        p Refreshing...
+block scripts
+  script(src="/runtime.js")

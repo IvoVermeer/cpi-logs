@@ -1,0 +1,8 @@
+extends layout
+
+include mixins/_tenant-form
+
+block content
+  div(class="w3-container")
+    +tenantForm(tenant)
+  

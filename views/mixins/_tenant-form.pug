@@ -1,0 +1,26 @@
+mixin tenantForm(tenant = {})
+  div(class="w3-card-4 w3-margin" style="max-width: 700px")
+    div(class="w3-container w3-metro-blue w3-bar")
+      h2 Edit tenant
+    div(class="w3-container")
+      form(action=`${tenant.id && `/${tenant.id}/edit` || '/add-tenant'}`, method="post")
+        label(for="name") Name
+        input(class="w3-input" type="text", name="name" value=tenant.name placeholder="Name for the tenant")
+
+        label(for="url") URL
+        input(class="w3-input" type="text", name="url" value=tenant.url placeholder="Tenant url")
+
+        label(for="folder") Log file folder
+        input(class="w3-input" type="text" value=tenant.folder name="folder")
+
+        label(for="username") Username (S- or P-user)
+        input(class="w3-input" type="text" value=tenant.username name="username" autocomplete="username")
+
+        label(for="password") Password
+        input(class="w3-input" type="password", name="password" autocomplete="current-password")
+
+        input(class="w3-button w3-metro-blue w3-margin" type="submit", value="Save")
+        a(class="w3-button w3-metro-blue w3-margin" href="/") Cancel
+        if (tenant.id)
+          input(class="w3-button w3-metro-blue w3-margin" type="submit", value="Delete" formaction=`/${tenant.id}/delete`)
+        

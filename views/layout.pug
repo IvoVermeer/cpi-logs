@@ -1,0 +1,24 @@
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/solid.css" integrity="sha384-aj0h5DVQ8jfwc8DA7JiM+Dysv7z+qYrFYZR+Qd/TwnmpDI6UaB3GJRRTdY8jYGS4" crossorigin="anonymous")
+    link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/fontawesome.css" integrity="sha384-WK8BzK0mpgOdhCxq86nInFqSWLzR5UAsNg0MGX9aDaIIrFWQ38dGdhwnNCAoXFxL" crossorigin="anonymous")
+    link(rel="stylesheet", href="/w3.css")
+    link(rel="stylesheet", href="/w3-colors-metro.css")
+    title #{title}
+  body
+    div(class="w3-container w3-bar w3-metro-blue")
+      h1
+        a(class="w3-bar-item w3-button" href="/") CPI logging
+    block flashes
+      div(class="w3-container")
+        - const categories = Object.keys(locals.flashes)
+          each category in categories
+            each message in flashes[category]
+              div(class=`w3-panel ${category}`) #{message}
+    block content
+
+    script(src="/socket.io/socket.io.js")
+    script(src="/app.js")
+    block scripts
