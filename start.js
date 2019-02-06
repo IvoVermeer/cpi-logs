@@ -2,6 +2,11 @@
 const http = require('./src/app');
 const opn = require('opn');
 
+if (process.env.NODEENV === 'dev') {
+  const inspector = require('inspector');
+  inspector.open();
+}
+
 http.listen(3000, () => {
   if (process.env.NODEENV !== 'dev') {
     opn(`http://localhost:${http.address().port}`);
