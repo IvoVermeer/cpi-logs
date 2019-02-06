@@ -1,0 +1,14 @@
+:root {
+  --duration: 280ms;
+}
+
+.w3-button {
+  transition: background var(--duration);
+}
+
+.w3-btn {
+  transition: box-shadow var(--duration), transform var(--duration);
+}
+.w3-btn:hover {
+  transform: scale(1.1);
+}
