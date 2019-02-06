@@ -17,7 +17,7 @@ block content
               p Deployed on: #{date}
               p Status: #{artifact.Status}
               label(for="lastRunDate") Last run date (logs as of) 
-              input(type="text", name="lastRunDate" value=`${tenant[artifact.Id] && tenant[artifact.Id].lastRunDate || ''}`)
+              input(type="text", name="lastRunDate" value=`${tenant[artifact.Id] && tenant[artifact.Id].lastRunDate || ''}` placeholder="yyyy-MM-ddTHH:mm:ss")
             div(class="w3-container")
               button(class="w3-btn w3-metro-blue w3-margin" type="button" name="logs" value=artifact.Id) Refresh logs
               button(class="w3-btn w3-metro-blue w3-margin" type="button" name="backup" value=artifact.Id) Backup

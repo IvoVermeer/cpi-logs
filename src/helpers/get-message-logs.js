@@ -5,6 +5,7 @@ const path = require('path');
 const mime = require('mime-types');
 const prettifyXml = require('prettify-xml');
 const moment = require('moment');
+const filenamify = require('filenamify');
 
 module.exports = async (tenantId, flowname, lastRunDate) => {
   let tenant = db
@@ -77,7 +78,8 @@ module.exports = async (tenantId, flowname, lastRunDate) => {
         if (ext === 'xml') {
           data = prettifyXml(data);
         }
-        fs.writeFileSync(path.join(logFolder, `${attachment.Name}.${ext}`), data);
+        let filename = filenamify(attachment.Name, { replacement: '-' });
+        fs.writeFileSync(path.join(logFolder, `${filename}.${ext}`), data);
       } catch (e) {
         console.dir(`Error retrieving ${attachment.Name}`);
       }

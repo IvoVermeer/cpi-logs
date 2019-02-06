@@ -49,7 +49,7 @@
           <label for="lastRunDate">Last run date (logs as of) </label>
           <input type="text" name="lastRunDate" value="${(tenant[artifact.Id] &&
             tenant[artifact.Id].lastRunDate) ||
-            ''}">
+            ''}" placeholder="yyyy-MM-ddTHH:mm:ss">
           </div>
           <div class="w3-container">
             <button class="w3-btn w3-metro-blue w3-margin" type="button" name="logs" value="${
